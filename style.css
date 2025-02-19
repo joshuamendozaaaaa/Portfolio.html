@@ -1,0 +1,237 @@
+/* General Styles */ 
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Apply Background Image to All Sections */
+section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add overlay for readability */
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+/* Style text above overlay */
+section * {
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText {
+    0% { text-shadow: 0px 0px 10px rgba(255, 102, 0, 0.8); }
+    100% { text-shadow: 0px 0px 20px rgba(255, 102, 0, 1); }
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Background Images for Each Section */
+#home { 
+    background-image: url('Home.avif'), url('download.jpg'); 
+    background-blend-mode: overlay;
+}
+#hero { background-image: url('Home\ -\ Copy.avif'); }
+#about { background-image: url('Home\ -\ Copy\ \(2\).avif'); }
+#skills { background-image: url('Home\ -\ Copy\ \(3\).avif'); }
+#services { background-image: url('Home\ -\ Copy\ \(4\).avif'); }
+#contact { background-image: url('Home\ -\ Copy\ \(5\).avif'); }
+
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: auto;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px 30px;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+nav .logo {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    background: white;
+    color: #121212;
+    border-radius: 5px;
+}
+
+/* Call to Action Buttons */
+.cta {
+    display: inline-block;
+    background: #ff6600;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 0px 15px rgba(255, 102, 0, 0.6);
+}
+
+.cta:hover {
+    background: #ff4500;
+    box-shadow: 0px 0px 25px rgba(255, 69, 0, 1);
+}
+
+/* Home Section Image Grid */
+#home .image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#home .profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 20px rgba(255, 102, 0, 0.8);
+}
+
+#home .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+}
+
+#home .image-grid img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    section {
+        height: auto;
+        padding: 60px 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section {
+        padding: 50px 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    p {
+        font-size: 0.9rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        text-align: right;
+        display: none;
+    }
+    
+    nav.active ul {
+        display: flex;
+    }
+    
+    #home .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    #home .image-grid img {
+        width: 90px;
+        height: 90px;
+    }
+    
+    #home .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+}
